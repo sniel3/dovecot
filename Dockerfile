@@ -1,6 +1,7 @@
+# Base image
 FROM debian:bullseye
 
-# Update and install dependencies
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     dovecot-core dovecot-imapd dovecot-pop3d \
     && apt-get clean
@@ -17,3 +18,4 @@ EXPOSE 143 993
 
 # Start Dovecot
 CMD ["dovecot", "-F"]
+
