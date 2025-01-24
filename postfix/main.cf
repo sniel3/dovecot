@@ -1,0 +1,30 @@
+# General settings
+myhostname = mail.applauseazure.com
+mydomain = applauseazure.com
+myorigin = $mydomain
+
+# Network settings
+inet_interfaces = all
+inet_protocols = ipv4
+
+# Mail directories
+home_mailbox = Maildir/
+virtual_alias_maps = hash:/etc/postfix/virtual
+
+# Relay domains
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+relay_domains =
+
+# Authentication
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+
+# TLS/SSL
+smtpd_tls_cert_file = /etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file = /etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_security_level = may
+
+# Restrictions
+smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination
+
