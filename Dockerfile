@@ -22,3 +22,10 @@ EXPOSE 143 993 25
 # Start Dovecot and Postfix
 CMD service postfix start && dovecot -F
 
+# Add mail storage and user credentials
+COPY mail /mail
+COPY users /etc/dovecot/users
+
+# Ensure proper permissions
+RUN chown -R 5000:5000 /mail
+
